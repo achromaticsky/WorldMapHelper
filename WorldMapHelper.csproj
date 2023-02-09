@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19C17980-8D41-4CB0-9B4C-8486D2EDABD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorldMapHelper</RootNamespace>
+    <AssemblyName>WorldMapHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Celeste\Development Fresh Install\Mods\WorldMapHelper\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\Celeste\Development Fresh Install\Mods\WorldMapHelper\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Celeste">
+      <HintPath>..\..\..\Celeste\Development Fresh Install\Celeste.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CollabUtils2">
+      <HintPath>..\..\..\Celeste\Development Fresh Install\Mods\CollabUtils2\bin\Release\net452\CollabUtils2.dll</HintPath>
+    </Reference>
+    <Reference Include="FNA, Version=21.7.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Celeste\Development Fresh Install\FNA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MMHOOK_Celeste, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Celeste\Development Fresh Install\MMHOOK_Celeste.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour, Version=21.8.19.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Celeste\Development (1.4)\MonoMod.RuntimeDetour.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoMod.Utils, Version=20.5.2.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Celeste\Development (1.4)\MonoMod.Utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomJournalPage.cs" />
+    <Compile Include="Entities\ExitListener.cs" />
+    <Compile Include="Entities\LevelNameDisplay.cs" />
+    <Compile Include="Entities\WorldMapNode.cs" />
+    <Compile Include="Entities\WorldMapController.cs" />
+    <Compile Include="Entities\WorldMapPath.cs" />
+    <Compile Include="JournalHandler.cs" />
+    <Compile Include="EverestModule\WorldMapHelperModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EverestModule\WorldMapHelperSaveData.cs" />
+    <Compile Include="EverestModule\WorldMapHelperSettings.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Ahorn\Entities\ExitListener.jl" />
+    <None Include="Ahorn\Entities\WorldMapController.jl" />
+    <None Include="Ahorn\Entities\WorldMapNode.jl" />
+    <None Include="Ahorn\Entities\WorldMapPath.jl" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\BadDown1.png" />
+    <Content Include="Graphics\BadDown2.png" />
+    <Content Include="Graphics\BadLeft1.png" />
+    <Content Include="Graphics\BadLeft2.png" />
+    <Content Include="Graphics\BadNeutral.png" />
+    <Content Include="Graphics\BadRight1.png" />
+    <Content Include="Graphics\BadRight2.png" />
+    <Content Include="Graphics\BadStart.png" />
+    <Content Include="Graphics\BadUp1.png" />
+    <Content Include="Graphics\BadUp2.png" />
+    <Content Include="Graphics\MadDown1.png" />
+    <Content Include="Graphics\MadDown2.png" />
+    <Content Include="Graphics\MadLeft1.png" />
+    <Content Include="Graphics\MadLeft2.png" />
+    <Content Include="Graphics\MadNeutral.png" />
+    <Content Include="Graphics\MadRight1.png" />
+    <Content Include="Graphics\MadRight2.png" />
+    <Content Include="Graphics\MadStart.png" />
+    <Content Include="Graphics\MadUp1.png" />
+    <Content Include="Graphics\MadUp2.png" />
+    <Content Include="Graphics\node.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
