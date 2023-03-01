@@ -724,44 +724,8 @@ namespace WorldMapHelper.Entities
 
         public void InitializeSprite(bool Badeline)
         {
-            MTexture[] UpAnim = new MTexture[4];
-            MTexture[] DownAnim = new MTexture[4];
-            MTexture[] LeftAnim = new MTexture[4];
-            MTexture[] RightAnim = new MTexture[4];
-            MTexture[] NeutralAnim = new MTexture[1];
-            MTexture[] StartAnim = new MTexture[1];
-            string MB = Badeline ? "Bad" : "Mad";
-
-            UpAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Up1"];
-            UpAnim[1] = GFX.Game["WorldMapHelper/" + MB + "Up2"];
-            UpAnim[2] = GFX.Game["WorldMapHelper/" + MB + "Up3"];
-            UpAnim[3] = GFX.Game["WorldMapHelper/" + MB + "Up4"];
-            DownAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Down1"];
-            DownAnim[1] = GFX.Game["WorldMapHelper/" + MB + "Down2"];
-            DownAnim[2] = GFX.Game["WorldMapHelper/" + MB + "Down3"];
-            DownAnim[3] = GFX.Game["WorldMapHelper/" + MB + "Down4"];
-            LeftAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Left1"];
-            LeftAnim[1] = GFX.Game["WorldMapHelper/" + MB + "Left2"];
-            LeftAnim[2] = GFX.Game["WorldMapHelper/" + MB + "Left3"];
-            LeftAnim[3] = GFX.Game["WorldMapHelper/" + MB + "Left4"];
-            RightAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Right1"];
-            RightAnim[1] = GFX.Game["WorldMapHelper/" + MB + "Right2"];
-            RightAnim[2] = GFX.Game["WorldMapHelper/" + MB + "Right3"];
-            RightAnim[3] = GFX.Game["WorldMapHelper/" + MB + "Right4"];
-            NeutralAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Neutral"];
-            StartAnim[0] = GFX.Game["WorldMapHelper/" + MB + "Start"];
-
-            WorldMapSprite = new Sprite(GFX.Game, "WorldMapHelper");
-            WorldMapSprite.AddLoop("up", 0.1f, UpAnim);
-            WorldMapSprite.AddLoop("down", 0.1f, DownAnim);
-            WorldMapSprite.AddLoop("left", 0.1f, LeftAnim);
-            WorldMapSprite.AddLoop("right", 0.1f, RightAnim);
-            WorldMapSprite.AddLoop("neutral", 0.1f, NeutralAnim);
-            WorldMapSprite.AddLoop("start", 0.1f, StartAnim);
-
-
-
-
+            string characters = Badeline ? "WorldMapHelper_badeline" : "WorldMapHelper_player";
+            WorldMapSprite = GFX.SpriteBank.Create(characters);
         }
 
 

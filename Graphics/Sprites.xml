@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sprites>
+
+  <WorldMapHelper_player path="WorldMapHelper/player/" start="neutral">
+    <Origin x="0" y="0" />
+
+    <Loop id="neutral" path="Neutral" frames="0" delay="0.1"/>
+    <Loop id="start" path="Start" frames="0" delay="0.1"/>
+
+    <Loop id="up" path="Up" frames="0-3" delay="0.1"/>
+    <Loop id="down" path="Down" frames="0-3" delay="0.1"/>
+    <Loop id="left" path="Left" frames="0-3" delay="0.1"/>
+    <Loop id="right" path="Right" frames="0-3" delay="0.1"/>
+  </WorldMapHelper_player>
+
+
+
+  <WorldMapHelper_badeline copy="WorldMapHelper_player" path="WorldMapHelper/player_badeline/"/>
+</Sprites>
+
+
+
