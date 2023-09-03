@@ -148,7 +148,7 @@ namespace WorldMapHelper.Entities
             }
 
             (_scene as Level).Camera.CenterOrigin();
-            (_scene as Level).Camera.Approach(CameraSafePosition(this.Position), 1);
+            (_scene as Level).Camera.Position = CameraSafePosition(this.Position);
             WorldMapSprite.Play("neutral");
             _LastAnimationTarget = CameraSafePosition(this.Position);
             _pathCycleA = new Color(255, 255, 90);
@@ -263,7 +263,7 @@ namespace WorldMapHelper.Entities
                     NewInput = false;
                 }
 
-                if (Input.Dash.Pressed || Input.Jump.Pressed)
+                if (Input.Dash.Pressed || Input.Jump.Pressed || Input.MenuConfirm.Pressed)
                 {
                     if (ReleasedConfirmButton) //prevents unintended node activation from starting the map on a node with the button held.
                     {
@@ -422,16 +422,22 @@ namespace WorldMapHelper.Entities
 
         private string GetCurrentNodeText()
         {
-
-            foreach (WorldMapNode n in _scene.Tracker.GetEntities<WorldMapNode>())
+            try
             {
-                if (n.NodeID == WorldMapMatrix[(int)MapPosition.X, (int)MapPosition.Y])
+                foreach (WorldMapNode n in _scene.Tracker.GetEntities<WorldMapNode>())
                 {
-                    return n.NodeText;
+                    if (n.NodeID == WorldMapMatrix[(int)MapPosition.X, (int)MapPosition.Y])
+                    {
+                        return n.NodeText;
+                    }
                 }
-            }
 
-            return "";
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return "Error displaying node text."; //Catch for a crash of unknown cause discovered by Monika. 
+            }
         }
 
         private void InitializeMapMatrix(List<Entity> pathList, List<Entity> nodeList)

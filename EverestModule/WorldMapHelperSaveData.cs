@@ -157,10 +157,11 @@ namespace Celeste.Mod.WorldMapHelper
             foreach (String j in JournalEntries)
                 if (j.StartsWith(Levelset + "|" + MapID))
                 {
-                    if (j == Levelset + "|" + MapID + "|" + Exits.ToString())
+                    if (j == Levelset + "|" + MapID )
                         return;
                     else
                         JournalEntries[JournalEntries.IndexOf(j)] = Levelset + "|" + MapID + "|" + Exits.ToString();
+                        return;
                 }
 
             JournalEntries.Add(Levelset + "|" + MapID + "|" + Exits.ToString());

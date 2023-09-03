@@ -36,7 +36,8 @@ namespace WorldMapHelper.Entities
             ExitCount = Convert.ToInt32(data.Attr("ExitCount"));
             IsWarpNode = Convert.ToBoolean(data.Attr("WarpNode"));
             CustomImage = data.Attr("CustomImage");
-            if (data.Attr("NodeColor") == "")
+            //System.Console.WriteLine(data.Attr("CustomColor"));
+            if (data.Attr("NodeColor") == "Custom")
                 NodeHexValue = data.Attr("CustomColor");
             else
                 NodeHexValue = data.Attr("NodeColor");
@@ -156,6 +157,19 @@ namespace WorldMapHelper.Entities
         {
             int R, G, B;
 
+            switch (HexCode) {
+                case "Red":
+                    HexCode = "FF0000";
+                    break;
+
+                case "Green":
+                    HexCode = "00FF00";
+                    break;
+
+                case "Blue":
+                    HexCode = "0000FF";
+                    break;
+                }
             try
             {
                 R = int.Parse(HexCode.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
