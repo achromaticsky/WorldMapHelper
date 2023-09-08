@@ -2,6 +2,7 @@
 using Celeste.Mod.CollabUtils2;
 using Microsoft.Xna.Framework;
 using MonoMod.RuntimeDetour;
+using Monocle;
 using System;
 using System.Reflection;
 using WorldMapHelper.Entities;
@@ -125,6 +126,22 @@ namespace Celeste.Mod.WorldMapHelper
             DisableHooks();
         }
 
+        [Command("unlockexit","flags an exit as completed")]
+        private static void FlagExit(string MapID, string ExitID)
+        {
+            SaveData.SaveExit(CollabUtils2.LobbyHelper.GetCollabNameForSID(ModuleInstance.ModName), MapID, ExitID);
+        }
+
+        [Command("lockexit", "flags an exit as completed")]
+        private static void LockExit(string MapID, string ExitID)
+        {
+            
+            
+            SaveData.LockExit(CollabUtils2.LobbyHelper.GetCollabNameForSID(ModuleInstance.ModName), MapID, ExitID);
+            
+        }
+
+
         private string onDialogClean(On.Celeste.Dialog.orig_Clean orig, string name, global::Celeste.Language language)
         {
             //Makes the author string in English.txt optional, as well as 
@@ -139,7 +156,7 @@ namespace Celeste.Mod.WorldMapHelper
                 return orig(name, language);
         }
 
-
+        
         public void Teleport(Level level, String destination)
         {
 

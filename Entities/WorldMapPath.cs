@@ -34,7 +34,9 @@ namespace WorldMapHelper.Entities
 
         public WorldMapPath(EntityData data, Vector2 offset, EntityID ID) : base(data.Position, data.Width, data.Height, true)
         {
-            //Visible = data.Attr("Visible") == "" ? true : false;
+            Visible = data.Attr("VisibleWhenUnlocked") == "" ? true : bool.Parse(data.Attr("VisibleWhenUnlocked"));
+         
+
             System.Console.WriteLine(data.Attr("Visible"));
             BoundExit = data.Attr("BoundExit");
             Position = data.Position + offset;

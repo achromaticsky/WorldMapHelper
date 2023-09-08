@@ -57,7 +57,7 @@ namespace WorldMapHelper.Entities
         public bool ArrivingFromWarpNode = false;
         public bool JustTeleported { get => _JustTeleported; set => _JustTeleported = value; }
         public Color PathCurrentColor { get => _pathCurrentColor; set => _pathCurrentColor = value; }
-
+        private bool InitialCameraPositionSet = false;
         public WorldMapController(Vector2 position) : base(position)
         {
             PlayerIsBadeline = SaveData.Instance.Assists.PlayAsBadeline;
@@ -147,10 +147,8 @@ namespace WorldMapHelper.Entities
                 MapCursorState = OverworldState.Animating;
             }
 
-            (_scene as Level).Camera.CenterOrigin();
-            (_scene as Level).Camera.Position = CameraSafePosition(this.Position);
             WorldMapSprite.Play("neutral");
-            _LastAnimationTarget = CameraSafePosition(this.Position);
+
             _pathCycleA = new Color(255, 255, 90);
             _pathCycleB = new Color(255, 255, 200);
             _pathLerpValue = 0;
@@ -212,6 +210,15 @@ namespace WorldMapHelper.Entities
 
             base.Update();
             WorldMapSprite.Update();
+
+
+            if (!InitialCameraPositionSet)
+            {
+                _LastAnimationTarget = CameraSafePosition(this.Position);
+                (_scene as Level).Camera.CenterOrigin();
+                (_scene as Level).Camera.Position = CameraSafePosition(this.Position);
+                InitialCameraPositionSet = true;
+            }
 
             _pathLerpValue += 0.02f * (float)(_pathLerpBack ? -1 : 1);
             if (_pathLerpValue >= 1)

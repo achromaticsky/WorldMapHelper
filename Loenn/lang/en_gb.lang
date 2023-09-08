@@ -1,0 +1,7 @@
+mods.WorldMapHelper.name=World Map Helper
+
+# Names
+entities.WorldMapHelper/ExitListener.placements.name.default=Exit Listener
+entities.WorldMapHelper/WorldMapNode.placements.name.default=World Map Node
+entities.WorldMapHelper/WorldMapPath.placements.name.default=World Map Path
+entities.WorldMapHelper/WorldMapController.placements.name.default=World Map Controller

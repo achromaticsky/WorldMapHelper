@@ -130,6 +130,11 @@
     <None Include="Ahorn\Entities\WorldMapController.jl" />
     <None Include="Ahorn\Entities\WorldMapNode.jl" />
     <None Include="Ahorn\Entities\WorldMapPath.jl" />
+    <None Include="Loenn\entities\ExitListener.lua" />
+    <None Include="Loenn\entities\WorldMapController.lua" />
+    <None Include="Loenn\entities\WorldMapNode.lua" />
+    <None Include="Loenn\entities\WorldMapPath.lua" />
+    <None Include="Loenn\lang\en_gb.lang" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

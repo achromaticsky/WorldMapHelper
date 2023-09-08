@@ -11,7 +11,6 @@ namespace Celeste.Mod.WorldMapHelper
         public List<String> JournalEntries;
 
 
-
         public WorldMapSaveData()
         {
             if (Exits is null)
@@ -98,6 +97,7 @@ namespace Celeste.Mod.WorldMapHelper
             }
 
         }
+
         public bool SaveExit(string Levelset, string MapID, string ExitName)
         {
 
@@ -109,12 +109,34 @@ namespace Celeste.Mod.WorldMapHelper
             return false;
 
         }
+
+       
+        public bool LockExit(string Levelset, string MapID, string ExitName)
+        {
+            int IndexFound = -1;
+            foreach (string e in Exits)
+            {
+                if (e.Split('|')[0] == Levelset && e.Split('|')[1].Equals(MapID, StringComparison.OrdinalIgnoreCase) && e.Split('|')[2].Equals(ExitName, StringComparison.OrdinalIgnoreCase))
+                    IndexFound = Exits.IndexOf(e);
+            }
+
+            if (IndexFound != -1)
+            {
+                Exits.RemoveAt(IndexFound);
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        
         public void UnflagExit(string Levelset, string ExitName)
         {
             int IndexFound = -1;
             foreach (string e in Exits)
             {
-                if (e.Split('|')[0] == Levelset && e.Split('|')[2] == ExitName)
+                if (e.Split('|')[0].Equals(Levelset,StringComparison.OrdinalIgnoreCase) && e.Split('|')[2].Equals(ExitName, StringComparison.OrdinalIgnoreCase))
                     IndexFound = Exits.IndexOf(e);
             }
 
@@ -122,11 +144,12 @@ namespace Celeste.Mod.WorldMapHelper
                 Exits[IndexFound] = Exits[IndexFound].Substring(0, Exits[IndexFound].Length - 1);
 
         }
+
         public bool CheckExit(string Levelset, string ExitName)
         {
             foreach (String c in Exits)
             {
-                if (c.Split('|')[0] == Levelset && c.Split('|')[2] == ExitName)
+                if (c.Split('|')[0].Equals(Levelset, StringComparison.OrdinalIgnoreCase) && c.Split('|')[2].Equals(ExitName, StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -134,11 +157,13 @@ namespace Celeste.Mod.WorldMapHelper
             }
             return false;
         }
+
+        
         public bool IsExitNew(string Levelset, string ExitName)
         {
             foreach (String c in Exits)
             {
-                if (c.Split('|')[0] == Levelset && c.Split('|')[2] == ExitName)
+                if (c.Split('|')[0].Equals(Levelset, StringComparison.OrdinalIgnoreCase) && c.Split('|')[2].Equals(ExitName, StringComparison.OrdinalIgnoreCase))
                 {
                     if (c.Split('|')[3] == "N")
                         return true;
@@ -149,8 +174,6 @@ namespace Celeste.Mod.WorldMapHelper
             }
             return false;
         }
-
-        //2/7 goal: implement exit tracking by level
 
         public void AddLevelToJournal(string Levelset, string MapID, int Exits)
         {
@@ -176,6 +199,7 @@ namespace Celeste.Mod.WorldMapHelper
             return false;
         }
 
+        //remove case sensitivity
         public int ExitsIn(string Levelset, string MapID, bool Total)
         {
             if (Total)
